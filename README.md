@@ -14,6 +14,7 @@ Output
 ------
 
     ## bsc-thesis
+        348M
          22 ignored
         remote origin
             FATAL: R any bsc-thesis nst DENIED by fallthru
@@ -23,12 +24,14 @@ Output
             and the repository exists.
 
     ## intrace
+        1.5M
             clean
         remote origin
             git@github.com:Fusl/intrace.git
             up to date
 
     ## project_1
+        22M
           3 untracked
          14 ignored
         remote origin
@@ -36,6 +39,7 @@ Output
             local out of date
 
     ## studip-fuse.n-st
+        756K
             clean
         remote niko
             git@github.com:N-Coder/studip-fuse.git
@@ -47,6 +51,7 @@ Output
             up to date
 
     ## wireless-regdb
+        1020K
           2  M
           4 untracked
           2 ignored
@@ -60,3 +65,6 @@ Notes:
 * If there are multiple branches, their states are aggregated, i.e. each state
   (up to date, out of date, …) is only printed once). The actual branch names
   are omitted. (see `studip-fuse.n-st`)
+* The size shown for each repo includes all files below that repo's directory,
+  possibly including submodules that are later mentioned individually by
+  git-rinfo.

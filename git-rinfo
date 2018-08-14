@@ -11,6 +11,8 @@ do
         repo_path="${repo_path##./}"
         printf '## %s\n' "$repo_path"
 
+        printf '    %s\n' "$(du -hs . | cut -f1)"
+
         git status --porcelain --ignored | (grep -o '^..' || printf '==\n') | sort -r | uniq -c | sed 's/1 ==/  clean/;s/!!/ignored/;s/??/untracked/'
 
         for remote in $(git remote)
