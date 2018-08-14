@@ -6,7 +6,10 @@ do
         cd "$line" || continue
         cd .. || continue
 
-        printf '## %s\n' "$(basename "$(pwd)")"
+        repo_path="$line"
+        repo_path="${repo_path%%/.git*}"
+        repo_path="${repo_path##./}"
+        printf '## %s\n' "$repo_path"
 
         git status --porcelain --ignored | (grep -o '^..' || printf '==\n') | sort -r | uniq -c | sed 's/1 ==/  clean/;s/!!/ignored/;s/??/untracked/'
 
