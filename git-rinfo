@@ -1,0 +1,21 @@
+#!/bin/sh
+
+find . -type d -name '.git' | while read -r line
+do
+    (
+        cd "$line" || continue
+        cd .. || continue
+
+        printf '## %s\n' "$(basename "$(pwd)")"
+
+        git status --porcelain --ignored | (grep -o '^..' || printf '==\n') | sort -r | uniq -c | sed 's/1 ==/  clean/;s/!!/ignored/;s/??/untracked/'
+
+        for remote in $(git remote)
+        do
+            printf '    remote %s\n' "$remote"
+            git remote show "$remote" 2>&1 | grep -oP '^[^* ].*|(?<=Fetch URL: ).+|(?<=\().+(?=\))' | sed 's/^/        /' | uniq
+        done
+
+        printf '\n'
+    )
+done
