@@ -1,6 +1,6 @@
 #!/bin/sh
 
-find . -type d -name '.git' | while read -r line
+find . -type d -name '.git' | sort | while read -r line
 do
     (
         cd "$line" || continue
